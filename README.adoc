@@ -40,7 +40,7 @@ Content/Sequencer/
     Shot02                                  - 分镜2
 ```
 
-image:./Docs/Image/Sequencer01.png[400,400]
+image:./Docs/Image/Sequencer01.png[Sequencer文件目录,400]
 
 ### 1.2. 快速入门
 请查阅官方文档，讲的十分详细。这里只做简述。
@@ -48,8 +48,8 @@ image:./Docs/Image/Sequencer01.png[400,400]
 #### 1.2.1. 创建Sequencer
 从菜单栏创建定序器 Cinematics->AddLevelSequence，或者内容浏览器中 右键->Animation->LevelSequence
 
-image:./Docs/Image/Sequencer02.png[300,300]
-image:./Docs/Image/Sequencer03.png[300,300]
+image:./Docs/Image/Sequencer02.png[菜单栏创建定序器,300]
+image:./Docs/Image/Sequencer03.png[内容浏览器中右键创建定序器,300]
 
 #### 1.2.2. 创建Shot1，使用角色动画
 新建一个定序器，实现从后面看人物背部，从下到上的镜头。
@@ -58,7 +58,7 @@ image:./Docs/Image/Sequencer03.png[300,300]
 2. 修改人物模型动画方式，由蓝图改为骨骼模型
 3. 新建定序器中使用的人物模型，设置动画和轨迹
 
-image:./Docs/Image/Sequencer04.png[800,800]
+image:./Docs/Image/Sequencer04.png[创建Shot1,800]
 
 #### 1.2.3. 创建Shot2
 新建一个定序器，实现从前面看人物脸部，从远到近的镜头。
@@ -66,12 +66,12 @@ image:./Docs/Image/Sequencer04.png[800,800]
 #### 1.2.4. 创建Master，拼接Shot1和Shot2
 新建一个定序器，先播放Shot1再播放Shot2。
 
-image:./Docs/Image/Sequencer05.png[800,800]
+image:./Docs/Image/Sequencer05.png[创建Master,800]
 
 #### 1.2.5. 创建Shot2的Take2和Take3
 右键Shot2片段，新建两个NewTake。可以选择Shot2使用的哪个Take，每个Take内容可以不一样。
 
-image:./Docs/Image/Sequencer06.png[400,400]
+image:./Docs/Image/Sequencer06.png[创建Takes,400]
 
 ## 999. 参考资料
 1. Sequencer快速入门：https://docs.unrealengine.com/zh-CN/Engine/Sequencer/QuickStart/index.html
