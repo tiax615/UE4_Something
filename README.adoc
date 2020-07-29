@@ -1,0 +1,77 @@
+# UE4_Something
+UE4.25它必须做点什么......
+2020-07-29
+:toc:
+
+## 0. 概述
+此项目用于尝试UE4.25引擎各种功能，和各种有趣的东西。
+
+- Sequencer 定序器
+- Niagara VFX
+- Chaos
+
+启用第三人称模板和初学者资源
+
+文件目录如下
+
+```
+Content/                                    - UE4内容
+    /Geometry                                   - 第三人称模板：几何体模型
+    /Mannequin                                  - 第三人称模板：角色和动画
+    /Sequencer                                  - 定序器资源
+    /StartContent                               - 初学者资源
+    /ThirdPerson                                - 第三人称模板：模型
+    /ThirdPersonBP                              - 第三人称模板：蓝图和地图
+    Sequencer.umap                              - 定序器地图
+UE4_Something.uproject                      - UE4项目文件
+```
+## 1. Sequencer
+Sequencer是虚幻引擎4的多轨迹编辑器，用于实时创建和预览过场动画序列。
+
+Sequencer 编辑器使用户能够用专业的多轨迹编辑器（类似于Matinee）创建游戏内过场动画。通过创建 关卡序列（Level Sequences） 和添加 轨迹（Tracks），用户可以定义各个轨迹的组成，这样将确定场景的内容。轨迹可以包含动画（Animation）（用于将角色动画化）、变形（Transformation）（在场景中移动各个东西）、音频（Audio）（用于包括音乐或音效）和数个其他轨迹（Track）类型等。
+
+### 1.1. 文件目录
+```
+Content/Sequencer/
+    Master                                  - 主定序器
+    Shot0002_02                             - 分镜2的Take2
+    Shot0002_03                             - 分镜2的Take3
+    Shot01                                  - 分镜1
+    Shot02                                  - 分镜2
+```
+
+image:./Docs/Image/Sequencer01.png[400,400]
+
+### 1.2. 快速入门
+请查阅官方文档，讲的十分详细。这里只做简述。
+
+#### 1.2.1. 创建Sequencer
+从菜单栏创建定序器 Cinematics->AddLevelSequence，或者内容浏览器中 右键->Animation->LevelSequence
+
+image:./Docs/Image/Sequencer02.png[300,300]
+image:./Docs/Image/Sequencer03.png[300,300]
+
+#### 1.2.2. 创建Shot1，使用角色动画
+新建一个定序器，实现从后面看人物背部，从下到上的镜头。
+
+1. 新建相机并设置相机位姿轨迹，焦点轨迹
+2. 修改人物模型动画方式，由蓝图改为骨骼模型
+3. 新建定序器中使用的人物模型，设置动画和轨迹
+
+image:./Docs/Image/Sequencer04.png[800,800]
+
+#### 1.2.3. 创建Shot2
+新建一个定序器，实现从前面看人物脸部，从远到近的镜头。
+
+#### 1.2.4. 创建Master，拼接Shot1和Shot2
+新建一个定序器，先播放Shot1再播放Shot2。
+
+image:./Docs/Image/Sequencer05.png[800,800]
+
+#### 1.2.5. 创建Shot2的Take2和Take3
+右键Shot2片段，新建两个NewTake。可以选择Shot2使用的哪个Take，每个Take内容可以不一样。
+
+image:./Docs/Image/Sequencer06.png[400,400]
+
+## 999. 参考资料
+1. Sequencer快速入门：https://docs.unrealengine.com/zh-CN/Engine/Sequencer/QuickStart/index.html
