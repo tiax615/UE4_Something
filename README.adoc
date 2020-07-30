@@ -33,11 +33,13 @@ Sequencer 编辑器使用户能够用专业的多轨迹编辑器（类似于Mati
 ### 1.1. 文件目录
 ```
 Content/Sequencer/
-    Master                                  - 主定序器
-    Shot0002_02                             - 分镜2的Take2
-    Shot0002_03                             - 分镜2的Take3
-    Shot01                                  - 分镜1
-    Shot02                                  - 分镜2
+    Master                                  - 主定序器：以下分镜的合成
+    Shot0002_02                             - 分镜2的Take2：从远到近看人物正面
+    Shot0002_03                             - 分镜2的Take3：从近到远看人物正面
+    Shot01                                  - 分镜1：从下到上看人物背部
+    Shot02                                  - 分镜2：从远到近看人物正面
+    Shot03                                  - 分镜3：导轨360度环视人物
+    Shot04                                  - 分镜4：人物运动，摇臂跟随
 ```
 
 image:./Docs/Image/Sequencer01.png[Sequencer文件目录,400]
@@ -89,6 +91,38 @@ image:./Docs/Image/Sequencer08.png[消退轨道设置,800]
 在创建动画序列时，有时可能需要让场景中的某个角色移动或执行某种动画。 在 序列器（Sequencer） 中，这是通过将骨架网格Actor添加到关卡序列，然后添加动画子轨迹并指定希望Actor执行的动画来完成的。 序列器使您能够通过将一个属性轨迹拖放到现有属性轨迹，自动对动画（以及属性值）执行交叉渐变和混合操作。 这样做时，将应用自动混合，您可以通过使用缓和属性或定义自己的自定义曲线资源对其进行调优和调整。
 
 image:./Docs/Image/Sequencer09.png[混合动画和属性,800]
+
+### 1.5. 音频轨迹
+略。TODO
+
+### 1.6. 摇臂和轨道
+#### 1.6.1. 摇臂
+真实场景制片人制作流畅扫描镜头的方法之一，就是将摄像机固定到摇臂上，通过摇臂的移动来控制镜头。您可以在Sequencer中使用 摄像机绑定摇臂（Camera Rig Crane） Actor和附带的 摄像机（Camera） 创建类似镜头。您可以设定绑定摇臂的绕X轴旋转、绕Y轴旋转或长度的关键帧，以及锁定挂载摄像机的绕X轴旋转或绕Y轴旋转（将跟踪摇臂的移动）。
+
+先在场景中新增摇臂CameraRigCrane和电影相机CineCameraActor，并将电影相机附加在摇臂上。
+
+image:./Docs/Image/Sequencer10.png[新增摇臂,300]
+
+将摇臂与相机添加到新建的Sequencer，设置相应的关键帧，实现摇臂控制相机。
+
+image:./Docs/Image/Sequencer11.png[摇臂定序器,800]
+
+摇臂可以控制Pitch，Yaw，Length等。
+
+image:./Docs/Image/Sequencer12.png[摇臂控制,300]
+
+#### 1.6.2. 轨道
+摄像机导轨 Actor 将摄像机连接到用于四处移动的导轨，可用来拍摄出飞越鸟瞰、360 度旋转或其他任何运动镜头。可以使用 样条组件 定义导轨的路径，在 Sequencer 中您还可以沿导轨为摄像机应该在任何给定时间所处的位置设置关键帧。
+
+和摇臂类似，先在场景中新增导轨CameraRigRail和电影相机CineCameraActor，并将电影相机附加在摇臂上。将导轨与相机添加到新建的Sequencer，设置相应的关键帧。
+
+导轨其实就是用Spline来制作的，方法和其他Spline组件一样。在导轨上新增轨迹，控制位置。
+
+image:./Docs/Image/Sequencer13.png[导轨,800]
+
+### 1.7. 播放速率轨迹
+和渐变轨迹使用方法类似，都是通过在轨迹上设置常数关键帧来调整播放速率。在Sequencer中新增TimeDilation轨迹。
+image:./Docs/Image/Sequencer14.png[播放速率,800]
 
 ## 999. 参考资料
 1. Sequencer快速入门：https://docs.unrealengine.com/zh-CN/Engine/Sequencer/QuickStart/index.html
