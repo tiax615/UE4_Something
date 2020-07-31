@@ -22,6 +22,7 @@ Content/                                    - UE4内容
     /StartContent                               - 初学者资源
     /ThirdPerson                                - 第三人称模板：模型
     /ThirdPersonBP                              - 第三人称模板：蓝图和地图
+    Niagara.umap                                - Niagara地图
     Sequencer.umap                              - 定序器地图
 UE4_Something.uproject                      - UE4项目文件
 ```
@@ -124,5 +125,46 @@ image:./Docs/Image/Sequencer13.png[导轨,800]
 和渐变轨迹使用方法类似，都是通过在轨迹上设置常数关键帧来调整播放速率。在Sequencer中新增TimeDilation轨迹。
 image:./Docs/Image/Sequencer14.png[播放速率,800]
 
+## 2. Niagara VFX
+Cascade和Niagara都可用于在虚幻引擎(UE4)内创建视觉效果(VFX)，但从创建和调整VFX的方式来看，Niagara与Cascade有很大不同。
+
+Niagara是虚幻引擎的次世代VFX系统。利用Niagara，技术美术师能够自行创建额外功能，而无需程序员的协助。我们将系统设计得具有更高适应性和灵活性，同时使其易用、易理解。
+
+### 2.1. 文件目录
+```
+Content/Niagara/
+    FX_FootstepDustPoof                         - Niagara粒子系统
+    M_DustPoof                                  - 尘埃云材质
+    云                                          - 尘埃云模型
+```
+### 2.2. 快速入门
+#### 2.2.1. 创建粒子材质
+
+使用ParticleColor节点作为基础颜色，PerlinNoise配合Step节点作为透明度的判断。材质属性设置为半透明
+
+image:./Docs/Image/Niagara01.png[创建粒子材质,600]
+
+### 2.2.2. 创建粒子系统
+
+在内容浏览器中右键，新建粒子系统 FX/NiagaraSystem，选择第一项。模板选择SimpleSpriteBurst。
+
+image:./Docs/Image/Niagara02.png[创建粒子系统,400]
+image:./Docs/Image/Niagara03.png[创建粒子系统,400]
+
+Niagara编辑器外观如下，每项设置详见官方文档Niagara快速入门。
+
+image:./Docs/Image/Niagara04.png[Niagara编辑器,800]
+
+### 2.2.3. 运用在动画中
+找到第三人称模板角色使用的奔跑动画 Content/Mannequin/Animations/ThirdPersonRun。在左脚和右键刚离开地面的时候帧，设置通知 PlayNiagaraParticleEffect
+
+image:./Docs/Image/Niagara05.png[奔跑动画,800]
+image:./Docs/Image/Niagara06.png[设置通知,400]
+
+选择新增的通知，在右侧细节面板中，选择使用我们的NiagaraSystem，调整各项参数。实现在奔跑的时候，脚下生灰。
+
+image:./Docs/Image/Niagara07.png[通知细节,400]
+
 ## 999. 参考资料
 1. Sequencer快速入门：https://docs.unrealengine.com/zh-CN/Engine/Sequencer/QuickStart/index.html
+2. Niagara快速入门：https://docs.unrealengine.com/zh-CN/Engine/Niagara/QuickStart/index.html
