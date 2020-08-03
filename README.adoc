@@ -164,6 +164,7 @@ image:./Docs/Image/Niagara06.png[设置通知,400]
 选择新增的通知，在右侧细节面板中，选择使用我们的NiagaraSystem，调整各项参数。实现在奔跑的时候，脚下生灰。
 
 image:./Docs/Image/Niagara07.png[通知细节,400]
+image:./Docs/Image/Niagara08.png[奔跑的尘埃,800]
 
 ## 999. 参考资料
 1. Sequencer快速入门：https://docs.unrealengine.com/zh-CN/Engine/Sequencer/QuickStart/index.html
